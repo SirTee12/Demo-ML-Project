@@ -53,6 +53,16 @@ class ModelTrainer:
                 test_array[:, :-1]
                 test_array[:, -1]
             )
+            
+            model = {
+                "Random Forest": RandomForestRegressor,
+                "Decision Tree": DecisionTreeRegressor,
+                "Gradient Boosting": GradientBoostingRegressor,
+                "Linear Regression": LinearRegression,
+                "KNeighbour Regressor": KNeighborsRegressor,
+                "XGB Regressor": XGBRegressor,
+                "Ada Boost Regressor": AdaBoostRegressor
+            }
         except:
             pass
     
