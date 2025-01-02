@@ -66,7 +66,17 @@ class ModelTrainer:
             }
             
             model_report:dict = evaluate_model(X_train=X_train, y_train=y_train,
-                                               X_test=X_test, y_test=y_test, models= models)
+                                               X_test=X_test, y_test=y_test, 
+                                               models= models)
+            
+            ## get the best model score
+            best_model_score = max(sorted(model_report.values()))
+            
+            # get the best model name form dict
+            best_model_name = list(model_report.keys())[
+                list(model_report.values()).index(best_model_score)
+            ]
+            
         except:
             pass
     
