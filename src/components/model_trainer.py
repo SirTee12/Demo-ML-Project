@@ -35,6 +35,7 @@ from dataclasses import dataclass
 from src.logger import logging
 
 from src.utils import save_object, evaluate_model
+from src.exception import CustomException
 
 @dataclass
 class ModelTrainingConfig:
@@ -76,6 +77,12 @@ class ModelTrainer:
             best_model_name = list(model_report.keys())[
                 list(model_report.values()).index(best_model_score)
             ]
+            
+            best_model = models[best_model_name]
+            
+            if best_model_score < 0.6:
+                raise CustomException("No best model found")
+            logging.info("Best Model found on both training and test data")
             
         except:
             pass
