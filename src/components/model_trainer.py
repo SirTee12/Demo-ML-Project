@@ -33,7 +33,8 @@ import warnings
 
 from dataclasses import dataclass
 from src.logger import logging
-from src.utils import save_object
+
+from src.utils import save_object, evaluate_model
 
 @dataclass
 class ModelTrainingConfig:
@@ -54,7 +55,7 @@ class ModelTrainer:
                 test_array[:, -1]
             )
             
-            model = {
+            models = {
                 "Random Forest": RandomForestRegressor(),
                 "Decision Tree": DecisionTreeRegressor(),
                 "Gradient Boosting": GradientBoostingRegressor(),
@@ -63,6 +64,9 @@ class ModelTrainer:
                 "XGB Regressor": XGBRegressor(),
                 "Ada Boost Regressor": AdaBoostRegressor()
             }
+            
+            model_report:dict = evaluate_model(X_train=X_train, y_train=y_train,
+                                               X_test=X_test, y_test=y_test, models= models)
         except:
             pass
     
