@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import sys
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -45,16 +46,15 @@ class ModelTrainer:
     def __init__(self):
         self.model_trainer = ModelTrainingConfig()
         
-    def initiate_model_trainer(self, train_array, test_array, preprocessor_path):
+    def initiate_model_trainer(self, train_array, test_array):
         logging.info("split training and test data set")
         
         try:
             X_train, y_train, X_test, y_test = (
                 train_array[:, :-1],
                 train_array[:, -1],
-                test_array[:, :-1]
-                test_array[:, -1]
-            )
+                test_array[:, :-1],
+                test_array[:, -1])
             
             models = {
                 "Random Forest": RandomForestRegressor(),
@@ -94,7 +94,8 @@ class ModelTrainer:
             r2_model_score = r2_score(X_test, predicted)
             return r2_model_score
             
-        except:
-            pass
+        except Exception as e:
+            raise CustomException(e, sys)
+        
     
     
