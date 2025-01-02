@@ -30,16 +30,16 @@ def evaluate_model(X_train, y_train, X_test, y_test, models, params,
     try:
         for i in range(len(list(models))):
             model = list(models.values())[i]
-            params = params[list(models.keys())[i]]
+            para = params[list(models.keys())[i]]
             
-            grid_search = GridSearchCV(model, params,
+            grid_search = GridSearchCV(model, para,
                                        cv=cv,n_jobs=n_jobs,
                                        verbose=verbose,refit=refit)
-            gs.fit(X_train,y_train)
+            grid_search.fit(X_train,y_train)
          
             #model.fit(X_train, y_train)  # train model
             
-            model.set_params(**gs.best_params_)
+            model.set_params(**grid_search.best_params_)
             model.fit(X_train,y_train)
             
          
