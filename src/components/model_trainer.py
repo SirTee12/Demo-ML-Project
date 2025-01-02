@@ -55,13 +55,13 @@ class ModelTrainer:
             )
             
             model = {
-                "Random Forest": RandomForestRegressor,
-                "Decision Tree": DecisionTreeRegressor,
-                "Gradient Boosting": GradientBoostingRegressor,
-                "Linear Regression": LinearRegression,
-                "KNeighbour Regressor": KNeighborsRegressor,
-                "XGB Regressor": XGBRegressor,
-                "Ada Boost Regressor": AdaBoostRegressor
+                "Random Forest": RandomForestRegressor(),
+                "Decision Tree": DecisionTreeRegressor(),
+                "Gradient Boosting": GradientBoostingRegressor(),
+                "Linear Regression": LinearRegression(),
+                "KNeighbour Regressor": KNeighborsRegressor(),
+                "XGB Regressor": XGBRegressor(),
+                "Ada Boost Regressor": AdaBoostRegressor()
             }
         except:
             pass
