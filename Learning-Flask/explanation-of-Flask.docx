@@ -1,0 +1,5 @@
+Flas is a web application writtten in python
+it was developed by Armin Ronacher
+It is based on the WSGI concept and Jinja2 template engine
+
+WSGI: Web server Gateway Protocol
