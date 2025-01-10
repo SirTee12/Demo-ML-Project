@@ -3,7 +3,8 @@ import numpy as np
 import pandas as pd
 
 from sklearn.preprocessing import StandardScaler
-from src.pipeline.predict_pipeline import CustomData, PredictPipeline
+from src.pipeline.predict_pipeline import CustomData, PredictPipeline, get
+
 
 application = Flask(__name__)
 
@@ -30,4 +31,10 @@ def predict_datapoint():
             writing_score=float(request.form.get('writing_score'))
             
         )
+        pred_df = data.get_data_as_dataframe()
+        print(pred_df)
+        
+        predict_pipeline = PredictPipeline()
+        results = predict_pipeline.predict(pred_df)
+        return render_template('home.html', results = results[0])
 
