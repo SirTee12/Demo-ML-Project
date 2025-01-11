@@ -1,6 +1,7 @@
 import sys
 import os
 import pandas as pd
+import numpy as np
 from src.exception import CustomException
 from src.utils import load_object
 
@@ -53,6 +54,7 @@ class CustomData:
                 'writing_score':[self.writing_score]
                 
             }
+           
             return custom_data_input_dict
         
         except Exception as e:
