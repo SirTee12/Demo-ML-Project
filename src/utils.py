@@ -4,6 +4,7 @@ import sys
 import pandas as pd
 import numpy as pd
 import dill
+import pickle
 
 from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 
@@ -62,9 +63,9 @@ def evaluate_model(X_train, y_train, X_test, y_test, models, params,
 def load_object(file_path):
     
     try:
-        with open(file_path, 'wb') as file_obj:
-            dill.dump(file_obj)
+        with open(file_path, 'rb') as file_obj:
+            return pickle.load(file_obj)
     
-    except Exception as e:
+    except EOFError as e:
         raise CustomException(e, sys)
     
